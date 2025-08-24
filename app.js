@@ -78,6 +78,7 @@ app.get(
 );
 
 
+
 app.post(
   "/listings",validateListing,
   wrapAsync(async (req, res) => {
@@ -123,14 +124,19 @@ app.delete(
 );
 
 
-app.post("/listings/:id/reviews", validateReview ,wrapAsync( async(req, res) => {
+
+app.post("/listings/:id/reviews", validateReview, wrapAsync(async (req, res) => {
     let listing = await Listing.findById(req.params.id);
+
     let newReview = new Review(req.body.review);
-     listing.reviews.push(newReview);
     await newReview.save();
+
+    listing.reviews.push(newReview._id); 
     await listing.save();
-res.redirect(`/listings/${listing._id}`);
+
+    res.redirect(`/listings/${listing._id}`);
 }));
+
 
 
 
