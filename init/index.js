@@ -18,6 +18,10 @@ async function main() {
 
 const initDB = async () => {
   await Listing.deleteMany({}); // jo pahale se pada hai usko clear krega 
+   initData.data = initData.data.map((obj) => ({
+    ...obj,
+    owner: "68ad6b6292ad0ef0a34368e0"  
+  }));
   await Listing.insertMany(initData.data);
   console.log("data was initialized");
 };

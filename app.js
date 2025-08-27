@@ -21,7 +21,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User =require("./models/user.js");
 const user = require("./models/user.js");
-
 main()
   .then(() => {
     console.log("connected to db");
@@ -39,22 +38,24 @@ app.get("/", (req, res) => {
 });
 
 
-const sessionOptions ={
+  const sessionOptions = {
   secret: "mysuperseretcode",
-  resave:false,
-  saveUninitialized:true,
-  cookie:{
-   expire: Date.now()*7*24*60*60*1000,
-   maxAge:7*24*60*60*1000,
-   httpOnly: true,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000, 
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
   },
 };
 app.use(session(sessionOptions));
 app.use(flash());
 
-passport.initialize();
-passport.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
+
 passport.use(new LocalStrategy(User.authenticate()));
+
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -62,6 +63,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currUser=req.user;        //ye login signup ke liye 
   next();
 });
 app.get("/demouser", async (req, res) => {
