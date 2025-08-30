@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl = process.env.ATLASDB_URL;
 
 main()
   .then(() => {
@@ -13,14 +13,14 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
 
 const initDB = async () => {
-  await Listing.deleteMany({}); // jo pahale se pada hai usko clear krega 
-   initData.data = initData.data.map((obj) => ({
+  await Listing.deleteMany({});
+  initData.data = initData.data.map((obj) => ({
     ...obj,
-    owner: "68ad6b6292ad0ef0a34368e0"  
+    owner: "68ad6b6292ad0ef0a34368e0"  // your User _id
   }));
   await Listing.insertMany(initData.data);
   console.log("data was initialized");
