@@ -7,9 +7,6 @@ const listingController = require("../controllers/listing.js");
 const multer = require("multer");
 const {storage}= require("../cloudConfig.js")
 const upload = multer({storage });
-
-
-
 router
 .route("/")
 .get(
@@ -35,9 +32,10 @@ router.route("/:id")
   wrapAsync(listingController.showListing)
 )
 .put(
-  validateListing,
   isLoggedIn,
-isOwner,
+  isOwner,
+  validateListing,
+ upload.single("listing[image]"),
   wrapAsync(listingController.updateListing)
 )
 .delete(
