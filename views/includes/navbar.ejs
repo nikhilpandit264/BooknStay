@@ -1,12 +1,12 @@
 <style>
-
   @media (max-width: 768px) {
     .navbar-collapse {
       position: fixed;
       top: 0;
       right: -250px;
-      height: auto;             
-       max-height: 100vh; 
+      width: 250px;
+      height: auto;
+      max-height: 100vh;
       background-color: #fe424d;
       padding: 1rem;
       transition: right 0.3s ease-in-out;
@@ -30,9 +30,20 @@
       outline: none;
       box-shadow: none;
     }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+    }
   }
 
-  /* Search wrapper */
   .search-box {
     display: flex;
     align-items: center;
@@ -42,7 +53,6 @@
     background: #fff;
   }
 
-  /* Input */
   .search-inp {
     border: none;
     padding: 0.6rem 1rem;
@@ -51,7 +61,6 @@
     outline: none;
   }
 
-  /* Button */
   .search-btn {
     background-color: #fe424d;
     color: #fff;
@@ -83,16 +92,20 @@
   <a class="nav-link d-inline-block" href="/listings">Explore</a>
 
   <!-- Toggler button -->
-  <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+    aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <!-- Navbar content -->
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <!-- Close button (only visible on small screens) -->
+    <button class="close-btn d-md-none" type="button" onclick="closeSidebar()">
+      &times;
+    </button>
 
-    <!-- Search bar -->
-
+    <!-- Search bar (hidden on small screens) -->
     <div class="navbar-nav mx-auto d-none d-md-flex">
       <form class="d-flex" role="search">
         <div class="search-box">
@@ -105,15 +118,24 @@
     </div>
 
     <!-- Right side -->
-
     <div class="navbar-nav ms-auto">
       <a class="nav-link" href="/listings/new">Host Your Nest</a>
       <% if (!currUser) { %>
         <a class="nav-link" href="/signup"><b>Sign up</b></a>
         <a class="nav-link" href="/login"><b>Login</b></a>
-        <% } else { %>
-          <a class="nav-link" href="/logout"><b>Logout</b></a>
-          <% } %>
+      <% } else { %>
+        <a class="nav-link" href="/logout"><b>Logout</b></a>
+      <% } %>
     </div>
   </div>
 </nav>
+
+<script>
+  function closeSidebar() {
+    let sidebar = document.getElementById("navbarNavAltMarkup");
+    let bsCollapse = bootstrap.Collapse.getInstance(sidebar);
+    if (bsCollapse) {
+      bsCollapse.hide(); // closes sidebar properly
+    }
+  }
+</script>

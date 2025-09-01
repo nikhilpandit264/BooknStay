@@ -102,7 +102,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack); 
+  // console.error(err.stack); 
   const { statusCode = 500, message = "Something went wrong" } = err;
   res.status(statusCode).render("error.ejs", { message });
   // res.render("error.ejs",{err});
