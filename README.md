@@ -32,4 +32,14 @@ A full-stack web app for discovering and sharing stays, built with **Node.js**, 
 ---
 
 ## 📁 Project Structure
-
+BooknStay/
+├─ controllers/ # Route logic
+├─ models/ # Mongoose schemas
+├─ routes/ # Express routers
+├─ views/ # EJS templates
+├─ public/ # Static files
+├─ utils/ # Helpers (error handling, etc.)
+├─ app.js # Main entry point
+├─ cloudConfig.js # Cloudinary setup
+├─ schema.js # Joi validation schemas
+└─ package.json
