@@ -43,3 +43,24 @@ BooknStay/
 ├─ cloudConfig.js # Cloudinary setup
 ├─ schema.js # Joi validation schemas
 └─ package.json
+
+PORT=3000
+NODE_ENV=development
+SESSION_SECRET=your_secret_key
+
+# Database
+MONGO_URL=mongodb://127.0.0.1:27017/booknstay
+# Or MongoDB Atlas connection string
+
+# Cloudinary
+CLOUD_NAME=your_cloud_name
+CLOUD_API_KEY=your_cloudinary_key
+CLOUD_API_SECRET=your_cloudinary_secret
+
+# Mapbox (optional)
+MAP_TOKEN=your_mapbox_token
+# Development (if nodemon is installed)
+npm run dev
+
+# Or standard start
+npm start
