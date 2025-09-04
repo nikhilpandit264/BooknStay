@@ -2,7 +2,7 @@
 
 A full-stack web app for discovering and sharing stays, built with **Node.js**, **Express**, **MongoDB**, **EJS**, and **Cloudinary** for image uploads.
 
-🔗 **Live Demo:** [BooknStay on Render](https://booknstay-qoa5.onrender.com/listings)
+🔗 **Live Demo:** [BooknStay](https://booknstay-qoa5.onrender.com/listings)
 
 ---
 
