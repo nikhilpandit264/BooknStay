@@ -1,4 +1,4 @@
-# BooknStay 🏨
+# BooknStay 🏨✈️
 
 A full-stack web app for discovering and sharing stays, built with **Node.js**, **Express**, **MongoDB**, **EJS**, and **Cloudinary** for image uploads.
 
