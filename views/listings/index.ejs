@@ -3,96 +3,64 @@
   <!-- <form method="GET" action="/listings/new">
       <button>Create New Listing</button>
     </form> -->
-  <style>
-   #filters {
-  display: flex;
-  flex-wrap: nowrap;   /* keep everything in a single line */
-  align-items: center; /* align vertically */
-  overflow-x: auto;    /* enable scroll if too many items */
-}
-
-.filter {
-  text-align: center;
-  margin-right: 2rem;
-  opacity: 0.7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.filter:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
-.filter p {
-  font-size: 0.8rem;
-  margin: 0; /* remove extra top spacing */
-}
-
-.tax-info {
-  display: none;
-}
-
-.tax-toggle {
-  border: 1px solid black;
-  border-radius: 1rem;
-  height: 3.25rem;
-  padding: 1rem;
-  margin-left: 2rem;
-  display: flex;
-  align-items: center;
-  white-space: nowrap; /* keep text in one line */
-}
-
-  </style>
-
-
   <div id="filters">
-    <div class="filter">
+    <a href="/listings?category=trending" class="filter <%= selectedCategory==='trending' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-fire"></i></div>
       <p>Trending</p>
-    </div>
-    <div class="filter">
+    </a>
+
+    <a href="/listings?category=rooms" class="filter <%= selectedCategory==='rooms' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-bed"></i></div>
       <p>Rooms</p>
-    </div>
-    <div class="filter">
+    </a>
+
+    <a href="/listings?category=iconic_cities"
+      class="filter <%= selectedCategory==='iconic_cities' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-mountain-city"></i></div>
-      <p>Iconic Cities </p>
-    </div>
-    <div class="filter">
+      <p>Iconic Cities</p>
+    </a>
+
+    <a href="/listings?category=mountain" class="filter <%= selectedCategory==='mountain' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-mountain"></i></div>
       <p>Mountain</p>
-    </div>
-    <div class="filter">
+    </a>
+
+    <a href="/listings?category=amazing_pool"
+      class="filter <%= selectedCategory==='amazing_pool' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-person-swimming"></i></div>
       <p>Amazing Pool</p>
-    </div>
-    <div class="filter">
+    </a>
+
+    <a href="/listings?category=camping" class="filter <%= selectedCategory==='camping' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-campground"></i></div>
-      <p>Camping </p>
-    </div>
-    <div class="filter">
+      <p>Camping</p>
+    </a>
+
+    <a href="/listings?category=farms" class="filter <%= selectedCategory==='farms' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-cow"></i></div>
       <p>Farms</p>
-    </div>
-    <div class="filter">
+    </a>
+
+    <a href="/listings?category=arctic" class="filter <%= selectedCategory==='arctic' ? 'active-filter' : '' %>">
       <div><i class="fa-regular fa-snowflake"></i></div>
       <p>Arctic</p>
-    </div>
-    <div class="filter">
+    </a>
+
+    <a href="/listings?category=castle" class="filter <%= selectedCategory==='castle' ? 'active-filter' : '' %>">
       <div><i class="fa-brands fa-fort-awesome"></i></div>
       <p>Castle</p>
-    </div>
-    <div class="filter">
+    </a>
+
+    <a href="/listings?category=domes" class="filter <%= selectedCategory==='domes' ? 'active-filter' : '' %>">
       <div><i class="fa-solid fa-igloo"></i></div>
       <p>Domes</p>
-    </div>
-    <!-- <div class="filter">
-      <div><i class="fa-solid fa-ship"></i></div>
-      <p>Boats</p>
-    </div> -->
+    </a>
+
+    <a href="/listings?category=other" class="filter <%= selectedCategory==='other' ? 'active-filter' : '' %>">
+      <div><i class="fa-solid fa-otter"></i></div>
+      <p>Other</p>
+    </a>
+
     <div class="tax-toggle">
       <div class="form-check-reverse form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
@@ -100,6 +68,7 @@
       </div>
     </div>
   </div>
+
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
     <% for (let listing of allListings) { %>
       <a href="/listings/<%=listing._id %>" class="listing-link">
