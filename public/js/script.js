@@ -18,3 +18,30 @@
       }, false)
     })
 })()
+
+
+// for side bar and updating placeholder 
+
+
+  function closeSidebar() {
+    let sidebar = document.getElementById("navbarNavAltMarkup");
+    let bsCollapse = bootstrap.Collapse.getInstance(sidebar);
+    if (bsCollapse) {
+      bsCollapse.hide();
+    }
+  }
+
+  function updatePlaceholder() {
+  const input = document.querySelector(".search-inp");
+  if (window.innerWidth <= 405) {
+    input.setAttribute("placeholder", "Search City");
+  } else {
+    input.setAttribute("placeholder", "Search Destination");
+  }
+}
+
+// Run on page load
+updatePlaceholder();
+
+// Run on window resize
+window.addEventListener("resize", updatePlaceholder);

@@ -1,8 +1,72 @@
 const Listing = require("../models/listing")
-module.exports.index=async (req, res) => {
+
+
+// module.exports.index=async (req, res) => {
+//     const allListings = await Listing.find({});
+//     res.render("listings/index.ejs", { allListings });
+//   };
+
+
+// module.exports.index = async (req, res) => {
+//   try {
+//     const search = req.query.search || ""; // get the search query
+
+//     if (search) {
+//       // Find the listing that matches the location
+//       const listing = await Listing.findOne({ location: search });
+
+//       if (listing) {
+//         // Redirect to that listing's page
+//         return res.redirect(`/listings/${listing._id}`);
+//       } else {
+//         req.flash("error", "No listing found for that location");
+//         return res.redirect("/listings");
+//       }
+//     }
+
+//     // If no search query, show all listings
+//     const allListings = await Listing.find({});
+//     res.render("listings/index.ejs", { allListings, search });
+//   } catch (err) {
+//     console.error(err);
+//     req.flash("error", "Something went wrong while fetching listings");
+//     res.redirect("/listings");
+//   }
+// };
+
+module.exports.index = async (req, res) => {
+  try {
+    const search = req.query.search || ""; // get search query
+
+    if (search) {
+      // Find all listings matching the location
+      const listings = await Listing.find({ location: search });
+
+      if (listings.length === 1) {
+        // Only one listing, redirect to its page
+        return res.redirect(`/listings/${listings[0]._id}`);
+      } else if (listings.length > 1) {
+        // Multiple listings, render filtered page
+        return res.render("listings/index.ejs", { allListings: listings, search });
+      } else {
+        // No listings found
+        req.flash("error", "No listings found for that location");
+        return res.redirect("/listings");
+      }
+    }
+
+    // If no search query, show all listings
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
-  };
+    res.render("listings/index.ejs", { allListings, search });
+  } catch (err) {
+    console.error(err);
+    req.flash("error", "Something went wrong while fetching listings");
+    res.redirect("/listings");
+  }
+};
+
+
+
 
 
  module.exports.renderNewForm=(req, res) => {

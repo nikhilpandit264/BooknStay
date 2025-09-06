@@ -108,3 +108,187 @@ padding-right: 0;
   height: 400px;
   width: 80vh;
 } */
+
+/* for nav bar */
+
+
+  @media (max-width: 768px) {
+    .navbar-collapse {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: auto;
+      max-height: 100vh;
+      background-color: #fe424d;
+      padding: 1rem;
+      transition: right 0.3s ease-in-out;
+      z-index: 1050;
+    }
+
+    .navbar-collapse.show {
+      right: 0;
+    }
+
+    .navbar-collapse .nav-link {
+      color: white !important;
+      margin: 0.5rem 0;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+    }
+  }
+/* Base Search Box */
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  overflow: hidden;
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-inp {
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  flex: 1;
+  outline: none;
+  min-width: 0;
+}
+
+.search-btn {
+  background-color: #fe424d;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-btn i {
+  margin-right: 0.5rem;
+}
+
+.search-btn:hover {
+  background-color: #e33a45;
+  color: #fff;
+}
+
+/* For tablets & small desktops */
+@media (max-width: 768px) {
+  .search-box {
+    max-width: 100%;     
+    border-radius: 30px;
+  }
+
+  .search-inp {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+    min-width: 140px;
+    flex: 1;
+  }
+
+  .search-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    flex-shrink: 0;
+  }
+
+  .search-btn i {
+    margin-right: 0.3rem;
+  }
+}
+
+/* Special case: under 550px (make everything smaller) */
+@media (max-width: 550px) {
+  .search-inp {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem; 
+    min-width: 100px;
+  }
+
+  .search-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+    min-width: 70px;
+  }
+}
+
+/* Very small phones: keep side-by-side */
+@media (max-width: 480px) {
+  .search-box {
+    flex-direction: row; /* force row layout */
+  }
+
+  .search-inp {
+    min-width: 90px;
+  }
+
+  .search-btn {
+    min-width: 65px;
+  }
+}
+/* Extra small screens: shrink input + button */
+/* Make search bar + input + button small under 550px */
+@media (max-width: 550px) {
+  .search-box {
+    max-width: 220px;   /* force smaller box */
+  }
+
+  .search-inp {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .search-btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .search-btn i {
+    margin-right: 0.2rem;
+  }
+}
+@media (max-width: 404px) {
+  .search-box {
+    max-width: 190px;   /* force smaller box */
+  }
+
+  .search-inp {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .search-btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .search-btn i {
+    margin-right: 0.2rem;
+  }
+}
