@@ -1,10 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top">
   <!-- Logo -->
-  <a class="navbar-brand" href="/listings">
-    <i class="fa-solid fa-compass"></i>
-  </a>
+<a class="navbar-brand" href="/listings">
+  <img src="/assets/image/logo.png" alt="Logo" class="nav-logo">
+</a>
+
   <!-- Explore -->
-  <a class="nav-link d-inline-block" href="/listings">Explore</a>
+  <a class="nav-link d-inline-block" href="/listings">Discover</a>
   <!-- Search bar (always visible) -->
   <div class="mx-auto flex-grow-1 px-2">
     <form class="d-flex w-100 justify-content-center" role="search" action="/listings" method="get">
@@ -32,7 +33,7 @@
 
     <!-- Right side -->
     <div class="navbar-nav ms-auto">
-      <a class="nav-link" href="/listings/new">Host Your Nest</a>
+      <a class="nav-link" href="/listings/new">Publish Your Stay</a>
       <% if (!currUser) { %>
         <a class="nav-link" href="/signup"><b>Sign up</b></a>
         <a class="nav-link" href="/login"><b>Login</b></a>

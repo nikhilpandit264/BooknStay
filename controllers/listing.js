@@ -30,9 +30,6 @@
 //   }
 // };
 
-
-
-
 //  module.exports.renderNewForm=(req, res) => {
 //   res.render("listings/new.ejs");
 // }
@@ -54,11 +51,11 @@
 //     console.log(listing);
 //     res.render("listings/show.ejs", { listing });
 //   };
-  
+
 //   // module.exports.createListing =async (req, res) => {
 //   //     let url =req.file.path;
 //   //     let filename =req.file.filename;
-    
+
 //   //     const newListing = new Listing(req.body.listing);
 //   //     newListing.owner =req.user._id;
 //   //     newListing.image = {url,filename};
@@ -107,7 +104,7 @@
 //     let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }); // deconstruct krte hai individual value me
 //     if(typeof req.file != "undefined"){
 //     let url =req.file.path;
-//       let filename =req.file.filename;    
+//       let filename =req.file.filename;
 //       listing.image ={url,filename};
 //       await listing.save();
 //       }
@@ -120,23 +117,26 @@
 //       let deletedListing = await Listing.findByIdAndDelete(id);
 //       // console.log(deletedListing);
 //           req.flash("success", " Listing Deleted")
-  
+
 //       res.redirect("/listings");
 //     }
-
 
 const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
   try {
-    const search = req.query.search || ""; // search query
+    const search = (req.query.search || "").trim(); // search query
     const category = req.query.category || ""; // category query
 
     let filter = {};
 
-    // If search is present, filter by location
+    // If search is present or in "delhi"
     if (search) {
-      filter.location = search;
+      filter.$or = [
+        { location: { $regex: search, $options: "i" } },
+        { title: { $regex: search, $options: "i" } },
+        { country: { $regex: search, $options: "i" } },
+      ];
     }
 
     // If category is present, filter by category
@@ -157,10 +157,10 @@ module.exports.index = async (req, res) => {
     }
 
     // Render all filtered listings
-    res.render("listings/index.ejs", { 
-      allListings: listings, 
-      search, 
-      selectedCategory: category || null // ✅ pass to views for highlighting icons
+    res.render("listings/index.ejs", {
+      allListings: listings,
+      search,
+      selectedCategory: category || null, // ✅ pass to views for highlighting icons
     });
   } catch (err) {
     console.error(err);

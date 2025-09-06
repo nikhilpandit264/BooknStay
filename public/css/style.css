@@ -356,3 +356,123 @@ padding-right: 0;
 }
 
 
+.starability-result,
+.starability-slot label {
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.nav-logo {
+  height: 2em;
+  width: auto;  /* keeps aspect ratio */
+  vertical-align: middle; /* aligns with text */
+  background-color: #e33a45;
+ border-radius: 2rem;
+  margin-left: 2px;
+}
+.nav-link {
+  font-family: 'Poppins', sans-serif; /* modern clean font */
+  font-size: 1.2rem; /* adjust size */
+  font-weight: 600;  /* bold but not too heavy */
+  color: #fe424d; /* Airbnb-style red */
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect with underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: #fe424d;
+  transition: width 0.3s ease;
+  -webkit-transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+  background: #fe424d;
+}
+
+.nav-link:hover {
+  color: #d63843; /* darker shade on hover */
+}
+
+/* for cards  */
+
+/* Remove link underline */
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Card style */
+.listing-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hover animation */
+.listing-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.card-img-top {
+  height: 20rem; /* same as your inline style */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Zoom image on hover */
+.listing-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Card body */
+.card-body {
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Title (your <b>) */
+.card-text b {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Price block (your inline div) */
+.card-text div {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fe424d;
+  background: rgba(254, 66, 77, 0.08);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  margin-top: 0.4rem;
+}
+
+/* Tax info */
+.tax-info {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-style: normal; /* remove italic look */
+  margin-left: 0.5rem;
+}
