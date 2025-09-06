@@ -275,11 +275,11 @@ padding-right: 0;
 }
 @media (max-width: 404px) {
   .search-box {
-    max-width: 190px;   /* force smaller box */
+    max-width: 170px;   /* force smaller box */
   }
 
   .search-inp {
-    font-size: 0.75rem;
+    font-size: 0.70rem;
     padding: 0.3rem 0.5rem;
   }
 
